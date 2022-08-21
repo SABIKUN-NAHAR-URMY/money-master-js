@@ -23,15 +23,7 @@ document.getElementById('calculate').addEventListener('click',function(){
     const rent = getElementId('rent');
     const clothes = getElementId('clothes');
 
-    if(isNaN(document.getElementById('food').value) || isNaN(document.getElementById('rent').value) || isNaN(document.getElementById('clothes').value) || isNaN(document.getElementById('income').value) )
-    {
-        alert('Please enter a number!');
-        return;
-    }
-    else if( food<0 || rent<0 || clothes<0 || incomeValue<0){
-        alert('Please enter a positive number!');
-        return;
-    }
+    
     
     //get totalExpenses value 
     const totalExpensesAmount = food + rent + clothes;
@@ -52,6 +44,16 @@ document.getElementById('calculate').addEventListener('click',function(){
     
     //set balance
     const setBalance = setElementId('balance',balance);
+
+    if(isNaN(document.getElementById('food').value) || isNaN(document.getElementById('rent').value) || isNaN(document.getElementById('clothes').value) || isNaN(document.getElementById('income').value) )
+    {
+        alert('Please enter a number!');
+        return;
+    }
+    else if( food<0 || rent<0 || clothes<0 || incomeValue<0){
+        alert('Please enter a positive number!');
+        return;
+    }
 
 })
 
