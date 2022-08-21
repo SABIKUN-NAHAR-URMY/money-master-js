@@ -13,30 +13,45 @@ function setElementId(setId, total)
 }
 
 //income value get here
-let income = document.getElementById('income');
-let incomeValueString = income.value;
-let incomeValue = parseInt(incomeValueString);
+// let income = document.getElementById('income');
+// let incomeValueString = income.value;
+// let incomeValue = parseInt(incomeValueString);
+// console.log(incomeValue);
 
 document.getElementById('calculate').addEventListener('click',function(){
     //get food, rent, clothes value
     const food = getElementId('food');
     const rent = getElementId('rent');
     const clothes = getElementId('clothes');
+    const income = getElementId('income');
+    
+    //alert
 
-    
-    
+    if(isNaN(document.getElementById('food').value) || isNaN(document.getElementById('rent').value) || isNaN(document.getElementById('clothes').value) || isNaN(document.getElementById('income').value) )
+    {
+        alert('Please enter a number!');
+        return;
+    }
+    else if( food<0 || rent<0 || clothes<0 || income<0){
+        alert('Please enter a positive number!');
+        return;
+    }
+
     //get totalExpenses value 
     const totalExpensesAmount = food + rent + clothes;
+    console.log(totalExpensesAmount, food, rent, clothes);
     
     
     //set totalExpenses value
     const totalExpenses = setElementId('total-expenses',totalExpensesAmount);
 
     //get balance 
-    const balance = incomeValue - totalExpensesAmount;
+    const balance = income - totalExpensesAmount;
+    console.log(balance, income);
+    
 
     //alert for totalExpensesAmount
-    if(incomeValue < totalExpensesAmount)
+    if(income < totalExpensesAmount)
     {
         alert('Income er cheeye beshi khoroc hoye jacce!');
         return;
@@ -45,21 +60,14 @@ document.getElementById('calculate').addEventListener('click',function(){
     //set balance
     const setBalance = setElementId('balance',balance);
 
-    if(isNaN(document.getElementById('food').value) || isNaN(document.getElementById('rent').value) || isNaN(document.getElementById('clothes').value) || isNaN(document.getElementById('income').value) )
-    {
-        alert('Please enter a number!');
-        return;
-    }
-    else if( food<0 || rent<0 || clothes<0 || incomeValue<0){
-        alert('Please enter a positive number!');
-        return;
-    }
+    
 
 })
 
 document.getElementById('save').addEventListener('click',function(){
     //get saving percent value
     const savingPercent = getElementId('saving-percent');
+    const income = getElementId('income');
     
     //alert for savingPercent
     if(savingPercent>100)
@@ -69,7 +77,7 @@ document.getElementById('save').addEventListener('click',function(){
     }
     
     //savingAmount calculate
-    const savingAmountResult = (incomeValue * savingPercent)/100;
+    const savingAmountResult = (income * savingPercent)/100;
 
     //set savingAmount
     const savingAmount = setElementId('saving-amount',savingAmountResult);
